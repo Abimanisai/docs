@@ -1,0 +1,274 @@
+#!/system/bin/sh
+
+
+#!/system/bin/sh
+#
+# File: question.sh
+#
+# Usailge: runproc example/question.sh - or run in terminal
+#
+# Description: example for an interactive chat, see mycommands.sh.dist
+#
+# This file is public domain in the USA and all free countries.
+# Elsewhere, consider it to be WTFPLv2. (wtfpl.net/txt/copying)
+#
+#### $$VERSION$$ v1.40-1-g35a44dd
+########################################################################
+
+######
+# parameters
+# $1 $2 args as given to starct_proc chat script arg1 arg2
+# $3 path to named pipe
+
+INPUT="${3:-/dev/stdin}"
+
+# adjust your language setting here
+# https://github.com/topkecleon/telegram-bot-bash#setting-up-your-environment
+export 'LC_ALL=C.UTF-8'
+export 'LANG=C.UTF-8'
+export 'LANGUAGE=C.UTF-8'
+
+unset IFS
+# set -f # if you are paranoid use set -f to disable globbing
+
+
+sta=(A B)
+end=(C D)
+numb=(3 4)
+a=(AC4)
+b=(AD3)
+c=(BC3)
+d=(BD4)
+lol=(AC)
+mol=(AD)
+nol=(BC)
+pol=(BD)
+molp=0
+xo=0
+xot=0
+lope=0
+i=0
+j=0
+p=0
+kt=0
+q=0
+ty=5
+now="$(date)"
+
+echo "This Is A Pre Programmed Coding's Output. Don't Bet Blindly With This Bot. Use This To Help You To Predict. I Never Ever Compeled Anyone To Use This. Do A Little Analysis And Then Play. This Can't Handle Bad Trends And Train. Your Money, Your Wish. I Never Sold This Or Get Money To Allow You To Use This. So Don't Ask Me If You Loss. The Donation Is Also For Buy Server or Data To Continue This Tool Run Always. If You Don't Understand Don't Play"
+echo "Try To Get Predict From 1st Draw to 10th Draw. Like 101, 111, 701 To Increase Accuracy.\n From Which Draw You Want Result"
+read -r kk <"${INPUT}"
+k=$((kk))
+lim=10
+nk=5
+il=0
+miopt='
+Enter '$((k-5))' to '$((k-1))' Draw History To Analyse According To Following Numbers\n
+AC = 1 | \t
+BC = 2 | \t
+AD = 3 | \t
+BD = 4\t
+'
+echo $miopt
+
+while [ $il -lt $nk ] 
+do
+    echo 'Enter' $((k-5)) 'Draw History mykeyboardstartshere "1", "2", "3", "4"'
+    read -r aju[$il] <"${INPUT}"
+    il=`expr $il + 1` 
+    k=`expr $k + 1`
+done
+ky=$((kk+5))
+option1() {
+ while [[ $i -lt 5 ]]
+ do
+  opt1sta="${sta[RANDOM%${#sta[@]}]}"
+  opt1num="${numb[RANDOM%${#numb[@]}]}"
+  opt1end="${end[RANDOM%${#end[@]}]}"
+  op1="$opt1sta$opt1end$opt1num"
+  if [ $op1 == $a ] || [ $op1 == $b ] || [ $op1 == $c ] || [ $op1 == $d ]; then
+        man="$opt1sta$opt1end"
+         break
+   else
+      continue
+   fi
+ done
+}
+option2() {
+ while [[ $i -lt 5 ]]
+ do
+  opt2sta="${sta[RANDOM%${#sta[@]}]}"
+  opt2num="${numb[RANDOM%${#numb[@]}]}"
+  opt2end="${end[RANDOM%${#end[@]}]}"
+  op2="$opt2sta$opt2end$opt2num"
+  if [ $op2 == $a ] || [ $op2 == $b ] || [ $op2 == $c ] || [ $op2 == $d ]; then
+        nan="$opt2sta$opt2end"
+         break
+   else
+      continue
+   fi
+ done
+}
+option3() {
+ while [[ $i -lt 5 ]]
+ do
+  opt3sta="${sta[RANDOM%${#sta[@]}]}"
+  opt3num="${numb[RANDOM%${#numb[@]}]}"
+  opt3end="${end[RANDOM%${#end[@]}]}"
+  op3="$opt3sta$opt3end$opt3num"
+  if [ $op3 == $a ] || [ $op3 == $b ] || [ $op3 == $c ] || [ $op3 == $d ]; then
+        oan="$opt3sta$opt3end"
+         break
+   else
+      continue
+   fi
+ done
+}
+chk() {
+ option1
+ option2
+ option3
+ while [[ $i -lt 50 ]]
+ do
+   if [ $op1 == $op2 ] || [ $op1 == $op3 ]
+    then
+     option1
+     option2
+     option3
+     continue
+    elif [ $op2 == $op3 ]; then
+     option1
+     option2
+     option3
+     continue
+    else
+     arr="$man $nan $oan"
+     ((j++))
+     ((k++))
+     break
+      fi
+ done
+}
+pri() {
+ if [[ ${arr[]} == *$nol ]] && [[ ${arr[]} == *$mol ]] && [[ ${arr[]} == *$pol ]]
+      then
+      ans="AD B"
+      fin="1"
+    elif [[ ${arr[]} == *$lol ]] && [[ ${arr[]} == *$mol ]] && [[ ${arr[]} == *$pol ]]
+      then
+      bns="AC D"
+      fin="2"
+    elif [[ ${arr[]} == *$pol ]] && [[ ${arr[]} == *$lol ]] && [[ ${arr[]} == *$nol ]]
+       then
+       cns="AC B"
+       fin="3"
+    elif [[ ${arr[]} == *$mol ]] && [[ ${arr[]} == *$lol ]] && [[ ${arr[]} == *$nol ]]
+       then
+       dns="A DC"
+       fin="4"
+ else
+  echo no bet
+fi
+}
+finn() {         
+ if [[ $p -lt 5 ]]
+ then
+  zxy[p]="$fin"
+  ((p++))
+ else
+  zxy[p]="$fin"
+  ((p++))
+ fi         
+}
+all(){
+while [[ $j -lt $((lim+5)) ]]
+do
+  option1
+  option2
+  option3
+  chk
+  pri
+  finn
+done
+}
+final1(){
+while :;
+do
+ all
+  if [[ ${zxy[]} == *"1 1"  ]] || [[ ${zxy[]} == *"2 2"  ]] || [[ ${zxy[]} == *"3 3"  ]] || [[ ${zxy[]} == *"4 4"  ]]
+  then
+    i=0
+    j=0
+    p=0
+    all
+    ((q++))
+  else
+    break
+  fi
+done
+}
+din(){
+while [[ $xo -lt 5 ]]
+do
+ final1
+  if [[ ${xyz[xot]} == ${aju[xot]} ]]
+   then
+      #echo ${aju[@]}
+      #echo ${xyz[@]}
+      molp=0
+      i=0
+      j=0
+      p=0
+      q=0
+      ty=0
+      final1
+     else
+      ((xot++))
+      ((xo++))
+      echo 
+  fi
+  #echo 2
+done
+}
+echo "Predicting...."
+echo " LADDER Prediction For" $kk "to" $((kk+9))
+while :;
+do
+ final1
+ #echo ${zxy[@]}  
+ if [[ ${zxy[ty]} == "1" ]]
+ then
+ echo " " $kk "- AD - B"
+ ((kk++))
+ ((ty++))
+ elif [[ ${zxy[ty]} == "2" ]]
+ then
+ echo " " $kk "- AC - D"
+ ((kk++))
+ ((ty++))
+ elif [[ ${zxy[ty]} == "3" ]]
+ then
+ echo " " $kk "- AC - B"
+ ((kk++))
+ ((ty++))
+ elif [[ ${zxy[ty]} == "4" ]]
+ then
+ echo " " $kk "- AD - C"
+ ((kk++))
+ ((ty++))
+ else
+   #echo
+   #echo " Go And Start Bet"
+   break
+ fi
+done
+#echo $lope
+echo 'Forward This Message To @AskroyalwinCOUPONoxymoron'
+echo ${res[@]}
+#echo ${aju[@]}
+#echo ${xyz[@]}
+#echo ${zxy[@]}  
+#echo $q "times"
+echo "This Is A Bot. Send Your Message To @AskroyalwinCOUPONoxymoron"
+echo "If You Make Profit Consider Give Atleast 5Rs Per Day To Help Me"
+echo "8428960603 - My GPay"
